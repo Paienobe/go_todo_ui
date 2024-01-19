@@ -1,0 +1,19 @@
+.todos_container {
+  width: 40%;
+  margin: auto;
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  right: 0;
+}
+
+.todos_container h1 {
+  letter-spacing: 1.5rem;
+  color: white;
+}
+
+.todos_container > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

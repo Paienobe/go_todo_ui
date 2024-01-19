@@ -1,0 +1,27 @@
+.task_input {
+  background-color: var(--secondary-background);
+  margin: 2rem 0;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task_input > div:first-of-type {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #d9e0ec3d;
+}
+
+.task_input input {
+  padding: 1rem;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.task_input input:focus {
+  outline: none;
+}
