@@ -3,3 +3,5 @@ export const defaultAuthInputValues = {
   email: "",
   password: "",
 };
+
+export const filterOptions = ["All", "Active", "Completed"];

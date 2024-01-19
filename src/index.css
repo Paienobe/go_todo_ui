@@ -10,6 +10,6 @@
 
 body {
   background-color: var(--app-background);
-  /* background-color: hsl(237, 14%, 26%);
-  background-color: hsl(233, 14%, 35%); */
+  font-size: 18px;
+  color: var(--text-color);
 }

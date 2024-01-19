@@ -1,0 +1,25 @@
+.todo_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #d9e0ec3d;
+}
+
+.todo_item > div:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.todo_item > div:first-of-type > div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #d9e0ec3d;
+}
+
+.todo_item > img {
+  cursor: pointer;
+}

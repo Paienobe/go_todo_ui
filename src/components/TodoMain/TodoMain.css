@@ -17,3 +17,39 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.todo_list_holder {
+  background-color: var(--secondary-background);
+  border-radius: 4px;
+}
+
+.todo_list_footer {
+  font-size: 14px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #d9e0ec3d;
+}
+
+.todo_list_footer button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #d9e0ec3d;
+  font-weight: bold;
+  display: block;
+}
+
+.todo_list_footer button:hover {
+  color: var(--text-color);
+}
+
+.todo_list_footer > div {
+  display: flex;
+  gap: 1rem;
+}
+
+.todo_list_footer button:is(.selected_filter) {
+  color: hsl(220, 98%, 61%);
+}

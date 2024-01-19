@@ -1,5 +1,5 @@
 :root {
-  --app-background: hsl(235, 24%, 19%);
+  --app-background: #000;
   --secondary-background: hsl(235, 24%, 19%);
-  --text-color: #fff;
+  --text-color: hsl(234, 39%, 85%);
 }
