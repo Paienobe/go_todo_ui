@@ -23,3 +23,7 @@
 .todo_item > img {
   cursor: pointer;
 }
+
+.todo_item > img:hover {
+  transform: scale(1.25);
+}
