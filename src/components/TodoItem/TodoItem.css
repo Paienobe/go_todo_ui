@@ -27,3 +27,18 @@
 .todo_item > img:hover {
   transform: scale(1.25);
 }
+
+.completed_task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.completed_task > img {
+  display: block;
+}
+
+.completed_task_name {
+  text-decoration: line-through;
+}
