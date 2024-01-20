@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { GlobalContextType } from "./types";
-import { LoginResponse, Task } from "../../types";
+import { Task } from "../../types";
 
 const GlobalContext = createContext({} as GlobalContextType);
 
@@ -11,7 +11,6 @@ type Props = {
 export const GlobalContextProvider = ({ children }: Props) => {
   const [accessToken, setAccessToken] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [loginResponse, setLoginResponse] = useState({} as LoginResponse);
 
   return (
     <GlobalContext.Provider
@@ -20,8 +19,6 @@ export const GlobalContextProvider = ({ children }: Props) => {
         setAccessToken,
         tasks,
         setTasks,
-        loginResponse,
-        setLoginResponse,
       }}
     >
       {children}

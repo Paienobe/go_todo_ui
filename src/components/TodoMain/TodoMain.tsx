@@ -9,8 +9,7 @@ import { useState } from "react";
 import { filterOptions } from "../../constants";
 
 const TodoMain = () => {
-  const { loginResponse } = useGlobalContext();
-  const { tasks } = loginResponse;
+  const { tasks } = useGlobalContext();
 
   const [filter, setFilter] = useState(filterOptions[0]);
 

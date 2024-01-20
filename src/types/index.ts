@@ -4,9 +4,3 @@ export type Task = {
   isCompleted: boolean;
   user_id: string;
 };
-
-export type LoginResponse = {
-  success: boolean;
-  tasks: Task[];
-  token: string;
-};

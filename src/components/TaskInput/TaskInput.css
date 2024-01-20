@@ -20,6 +20,7 @@
   width: 100%;
   background-color: transparent;
   border: none;
+  color: white;
 }
 
 .task_input input:focus {

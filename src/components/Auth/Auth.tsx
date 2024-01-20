@@ -8,7 +8,7 @@ import { AuthTypes } from "./types";
 import { useGlobalContext } from "../../context/globalContext/GlobalContext";
 
 const Auth = ({ setIsAuthorized }: AuthTypes) => {
-  const { setLoginResponse } = useGlobalContext();
+  const { setTasks, setAccessToken } = useGlobalContext();
   const [isRegister, setIsRegister] = useState(true);
   const [inputValues, setInputValues] = useState(defaultAuthInputValues);
   const toggleSelectedBtn = () => {
@@ -33,8 +33,9 @@ const Auth = ({ setIsAuthorized }: AuthTypes) => {
       const response = request.data;
       if (response.success) {
         toast.success("Logged in");
-        setIsAuthorized(true);
-        setLoginResponse(response);
+        setIsAuthorized(response.success);
+        setTasks(response.tasks);
+        setAccessToken(response.token);
       }
     }
   };
