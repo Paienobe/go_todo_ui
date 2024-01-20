@@ -1,17 +1,41 @@
-// import { createTask } from "../../api";
 import { useGlobalContext } from "../../context/globalContext/GlobalContext";
 import "./TodoMain.css";
 import darkBG from "../../assets/bg-desktop-dark.jpg";
 import sun from "../../assets/icon-sun.svg";
 import TaskInput from "../TaskInput/TaskInput";
 import TodoItem from "../TodoItem/TodoItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { filterOptions } from "../../constants";
 
 const TodoMain = () => {
   const { tasks } = useGlobalContext();
-
+  const [tasksTemp, setTasksTemp] = useState(tasks);
   const [filter, setFilter] = useState(filterOptions[0]);
+
+  const activeTasksLength = tasks.filter((task) => {
+    return !task.isCompleted;
+  }).length;
+
+  useEffect(() => {
+    switch (filter) {
+      case filterOptions[1]:
+        const activeTasks = tasks.filter((task) => {
+          return !task.isCompleted;
+        });
+        setTasksTemp(activeTasks);
+        break;
+      case filterOptions[2]:
+        const completedTasks = tasks.filter((task) => {
+          return task.isCompleted;
+        });
+        setTasksTemp(completedTasks);
+        break;
+
+      default:
+        setTasksTemp(tasks);
+        break;
+    }
+  }, [filter, tasks]);
 
   return (
     <div className="todo_main">
@@ -26,12 +50,13 @@ const TodoMain = () => {
         <TaskInput />
 
         <div className="todo_list_holder">
-          {tasks.map((task) => {
+          {tasksTemp.map((task) => {
             return <TodoItem key={task.id} task={task} />;
           })}
 
           <div className="todo_list_footer">
-            {tasks.length} items left
+            {activeTasksLength} item
+            {activeTasksLength > 1 || (activeTasksLength == 0 && "s")} left
             <div>
               {filterOptions.map((option) => {
                 return (
