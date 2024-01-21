@@ -6,15 +6,25 @@ import TaskInput from "../TaskInput/TaskInput";
 import TodoItem from "../TodoItem/TodoItem";
 import { useEffect, useState } from "react";
 import { filterOptions } from "../../constants";
+import { deleteAll } from "../../api";
+import { toast } from "react-toastify";
 
 const TodoMain = () => {
-  const { tasks } = useGlobalContext();
+  const { tasks, setTasks, accessToken } = useGlobalContext();
   const [tasksTemp, setTasksTemp] = useState(tasks);
   const [filter, setFilter] = useState(filterOptions[0]);
 
   const activeTasksLength = tasks.filter((task) => {
     return !task.isCompleted;
   }).length;
+
+  const handleDeleteAll = () => {
+    deleteAll(accessToken).then(() => {
+      setTasksTemp([]);
+      setTasks([]);
+      toast.success("All tasks deleted!");
+    });
+  };
 
   useEffect(() => {
     switch (filter) {
@@ -70,7 +80,7 @@ const TodoMain = () => {
                 );
               })}
             </div>
-            <button>Clear Completed</button>
+            <button onClick={handleDeleteAll}>Clear Completed</button>
           </div>
         </div>
       </div>

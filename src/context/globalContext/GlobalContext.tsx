@@ -9,7 +9,11 @@ type Props = {
 };
 
 export const GlobalContextProvider = ({ children }: Props) => {
-  const [accessToken, setAccessToken] = useState("");
+  const storedAccessToken = localStorage.getItem(
+    "go_todo_access_token"
+  ) as string;
+
+  const [accessToken, setAccessToken] = useState(storedAccessToken || "");
   const [tasks, setTasks] = useState<Task[]>([]);
 
   return (

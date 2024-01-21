@@ -36,6 +36,7 @@ const Auth = ({ setIsAuthorized }: AuthTypes) => {
         setIsAuthorized(response.success);
         setTasks(response.tasks);
         setAccessToken(response.token);
+        localStorage.setItem("go_todo_access_token", response.token);
       }
     }
   };

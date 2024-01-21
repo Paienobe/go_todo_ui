@@ -52,3 +52,28 @@ export const updateTask = async (
     throw new Error("Failed to update task");
   }
 };
+
+export const deleteAll = async (accessToken: string) => {
+  try {
+    const request = await goTodoInstance.delete("/delete-all", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    const response = request.data;
+    return response;
+  } catch (error) {
+    toast.error("Failed to delete all tasks!");
+    throw new Error("Failed to delete all tasks");
+  }
+};
+
+export const checkTokenValidity = async (accessToken: string) => {
+  try {
+    const request = await goTodoInstance.get("/check-validity", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    const response = request.data;
+    return response;
+  } catch (error) {
+    throw new Error("Access token is no longer valid");
+  }
+};

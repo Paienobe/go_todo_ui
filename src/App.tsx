@@ -1,24 +1,35 @@
 import "./App.css";
 import Auth from "./components/Auth/Auth";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TodoMain from "./components/TodoMain/TodoMain";
-import { useState } from "react";
-import { GlobalContextProvider } from "./context/globalContext/GlobalContext";
+import { useEffect, useState } from "react";
+import { useGlobalContext } from "./context/globalContext/GlobalContext";
+import { checkTokenValidity } from "./api";
 
 function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const { setTasks } = useGlobalContext();
+
+  useEffect(() => {
+    const storedAccessToken = localStorage.getItem("go_todo_access_token");
+    if (storedAccessToken) {
+      checkTokenValidity(storedAccessToken).then((result) => {
+        setIsAuthorized(true);
+        setTasks(result);
+        toast.done("Welcome back");
+      });
+    }
+  }, []);
 
   return (
     <>
-      <GlobalContextProvider>
-        {!isAuthorized ? (
-          <Auth setIsAuthorized={setIsAuthorized} />
-        ) : (
-          <TodoMain />
-        )}
-        <ToastContainer />
-      </GlobalContextProvider>
+      {!isAuthorized ? (
+        <Auth setIsAuthorized={setIsAuthorized} />
+      ) : (
+        <TodoMain />
+      )}
+      <ToastContainer />
     </>
   );
 }
